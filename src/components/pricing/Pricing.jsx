@@ -9,8 +9,8 @@ import check from "../../assets/check.svg";
 const Pricing = () => {
   return (
     <>
-      <div className="flex items-center justify-center text-white pt-[60px]">
-        <div className="grid items-start justify-start bg-[#62D1FE] p-[40px] w-[300px] h-[700px] border-l-2 border-y-2 border-[#00B6FF]">
+      <div className="grid md:flex items-center justify-center text-white pt-[60px]">
+        <div className="grid items-start justify-start bg-[#62D1FE] p-[40px] w-[300px] h-[700px] border-l-2 border-y-2 border-[#00B6FF] mb-[100px] md:mb-0">
           <div className="flex items-center justify-center text-2xl font-semibold">
             Basic
           </div>
@@ -37,7 +37,7 @@ const Pricing = () => {
             </div>
           </div>
         </div>
-        <div className="grid items-start justify-start bg-[#62D1FE] p-[40px] w-[300px] h-[700px] -mt-[40px] border-2 border-[#00B6FF]">
+        <div className="grid items-start justify-start bg-[#62D1FE] p-[40px] w-[300px] h-[700px] -mt-[40px] border-2 border-[#00B6FF] mb-[100px] md:mb-0">
           <div className="flex items-center justify-center text-2xl font-semibold">
             Business
           </div>
@@ -68,7 +68,7 @@ const Pricing = () => {
             </div>
           </div>
         </div>
-        <div className="grid items-start justify-start bg-[#62D1FE] p-[40px] w-[300px] h-[700px] border-r-2 border-y-2 border-[#00B6FF]">
+        <div className="grid items-start justify-start bg-[#62D1FE] p-[40px] w-[300px] h-[700px] border-r-2 border-y-2 border-[#00B6FF] mb-[100px] md:mb-0">
           <div className="flex items-center justify-center text-2xl font-semibold">
             Entrepreneur
           </div>

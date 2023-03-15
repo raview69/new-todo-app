@@ -32,7 +32,10 @@ const Header = () => {
                   <AiOutlineClose className="text-3xl text-white" />
                 </div>
               </div>
-              <div className="text-white text-2xl font-semibold mx-[30px]">
+              <div
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-white text-2xl font-semibold mx-[30px]"
+              >
                 <div className="my-[40px]">
                   <Link to="/about">About</Link>
                 </div>
