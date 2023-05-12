@@ -11,6 +11,9 @@ export const activityApi = createApi({
       query: () => "/activity-groups",
       providesTags: ["Activity"],
     }),
+    getActivityById: builder.query({
+      query: (id) => `/activity-groups/${id}`,
+    }),
     createActivit: builder.mutation({
       query: (data) => ({
         url: "/activity-groups",
@@ -19,7 +22,20 @@ export const activityApi = createApi({
       }),
       invalidatesTags: ["Activity"],
     }),
+    updateTitle: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/activity-groups/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+      invalidatesTags: ["Activity"],
+    }),
   }),
 });
 
-export const { useGetActivityQuery, useCreateActivitMutation } = activityApi;
+export const {
+  useGetActivityQuery,
+  useGetActivityByIdQuery,
+  useCreateActivitMutation,
+  useUpdateTitleMutation,
+} = activityApi;

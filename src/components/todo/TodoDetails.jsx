@@ -1,16 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { GoPlus } from "react-icons/go";
+import { MdArrowBackIosNew } from "react-icons/md";
+import { TbPencil } from "react-icons/tb";
 import TodoEmpty from "./TodoEmpty";
+import {
+  useUpdateTitleMutation,
+  useGetActivityByIdQuery,
+} from "../../services/activityApi";
 
 const TodoDetails = () => {
   const { id } = useParams();
-  console.log(id);
+  const [updateTitle] = useUpdateTitleMutation();
+  const { data: title } = useGetActivityByIdQuery(id);
+  const { register, reset } = useForm({
+    defaultValues: {
+      title: "",
+    },
+  });
+
+  useEffect(() => {
+    reset({ title: title?.title });
+  }, [title]);
+
+  const onSubmit = async (data) => {
+    await updateTitle({ id, data });
+  };
+
   return (
     <div className="px-[220px] mt-[49px]">
       <div className="flex items-center justify-between">
-        <div className="font-bold text-[36px] leading-[54px] text-black">
-          Activity
+        <div className="flex items-center justify-between ">
+          <MdArrowBackIosNew className="text-2xl" />
+          <div className="font-bold text-[36px] leading-[54px] text-black mx-[28px]">
+            <input
+              {...register("title")}
+              type="input"
+              className="bg-[#F4F4F4] outline-none w-[250px]"
+              onChange={(e) => {
+                onSubmit({ title: e.target.value });
+              }}
+            />
+          </div>
+          <TbPencil className="text-2xl text-[#A4A4A4]" />
         </div>
         <div className="flex items-center justify-center text-white bg-[#16ABF8] w-[159px] h-[53px] rounded-[45px] leading-[27px] text-[18px] font-semibold">
           <GoPlus className="text-md font-bold mr-1" /> Tambah
