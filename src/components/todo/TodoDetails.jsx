@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { GoPlus } from "react-icons/go";
@@ -9,11 +9,14 @@ import {
   useUpdateTitleMutation,
   useGetActivityByIdQuery,
 } from "../../services/activityApi";
+import { ModalContext } from "../modal/ModalContext";
+import TodoForm from "./TodoForm";
 
 const TodoDetails = () => {
   const { id } = useParams();
   const [updateTitle] = useUpdateTitleMutation();
   const { data: title } = useGetActivityByIdQuery(id);
+  const { handleModal } = useContext(ModalContext);
   const { register, reset } = useForm({
     defaultValues: {
       title: "",
@@ -45,7 +48,10 @@ const TodoDetails = () => {
           </div>
           <TbPencil className="text-2xl text-[#A4A4A4]" />
         </div>
-        <div className="flex items-center justify-center text-white bg-[#16ABF8] w-[159px] h-[53px] rounded-[45px] leading-[27px] text-[18px] font-semibold">
+        <div
+          onClick={() => handleModal(<TodoForm />)}
+          className="flex items-center justify-center text-white bg-[#16ABF8] w-[159px] h-[53px] rounded-[45px] leading-[27px] text-[18px] font-semibold"
+        >
           <GoPlus className="text-md font-bold mr-1" /> Tambah
         </div>
       </div>
