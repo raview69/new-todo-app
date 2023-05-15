@@ -23,6 +23,8 @@ const TodoDetails = () => {
     },
   });
 
+  console.log(title);
+
   useEffect(() => {
     reset({ title: title?.title });
   }, [title]);
@@ -49,7 +51,7 @@ const TodoDetails = () => {
           <TbPencil className="text-2xl text-[#A4A4A4]" />
         </div>
         <div
-          onClick={() => handleModal(<TodoForm />)}
+          onClick={() => handleModal(<TodoForm id={id} />)}
           className="flex items-center justify-center text-white bg-[#16ABF8] w-[159px] h-[53px] rounded-[45px] leading-[27px] text-[18px] font-semibold"
         >
           <GoPlus className="text-md font-bold mr-1" /> Tambah

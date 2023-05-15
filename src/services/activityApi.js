@@ -14,7 +14,7 @@ export const activityApi = createApi({
     getActivityById: builder.query({
       query: (id) => `/activity-groups/${id}`,
     }),
-    createActivit: builder.mutation({
+    createActivity: builder.mutation({
       query: (data) => ({
         url: "/activity-groups",
         method: "POST",
@@ -30,12 +30,21 @@ export const activityApi = createApi({
       }),
       invalidatesTags: ["Activity"],
     }),
+    createTodo: builder.mutation({
+      query: (data) => ({
+        url: "/todo-items",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["Activity"],
+    }),
   }),
 });
 
 export const {
   useGetActivityQuery,
   useGetActivityByIdQuery,
-  useCreateActivitMutation,
+  useCreateActivityMutation,
   useUpdateTitleMutation,
+  useCreateTodoMutation,
 } = activityApi;

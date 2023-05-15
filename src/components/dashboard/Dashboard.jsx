@@ -4,14 +4,14 @@ import { useForm } from "react-hook-form";
 import { GoPlus } from "react-icons/go";
 import {
   useGetActivityQuery,
-  useCreateActivitMutation,
+  useCreateActivityMutation,
 } from "../../services/activityApi";
 import Item from "./Item";
 
 const Dashboard = () => {
   const { data } = useGetActivityQuery();
   const activityData = data?.data.slice(0, 20);
-  const [createActivity] = useCreateActivitMutation();
+  const [createActivity] = useCreateActivityMutation();
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
