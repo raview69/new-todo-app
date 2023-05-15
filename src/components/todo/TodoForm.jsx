@@ -12,15 +12,13 @@ const TodoForm = ({ id }) => {
   const { handleModal } = useContext(ModalContext);
   const [createTodo] = useCreateTodoMutation();
 
-  const { register, handleSubmit, setValue, getValues } = useForm({
+  const { register, handleSubmit, setValue } = useForm({
     defaultValues: {
       title: "",
       activity_group_id: Number(id),
       priority: "very-high",
     },
   });
-
-  console.log(selectedOption);
 
   const priority = ["very-high", "high", "medium", "low", "very-low"];
 
@@ -59,7 +57,7 @@ const TodoForm = ({ id }) => {
             Tambah List Item
           </div>
           <div onClick={handleModal}>
-            <CgClose className="text-[#A4A4A4] text-lg" />
+            <CgClose className="text-[#A4A4A4] text-lg cursor-pointer" />
           </div>
         </div>
         <div className="px-[30px] border-b-[1px] border-[#E5E5E5] py-[24px]">
@@ -76,12 +74,12 @@ const TodoForm = ({ id }) => {
               />
             </div>
           </div>
-          <div className="mt-[26px] ">
+          <div className="mt-[26px]">
             <div className="text-[12px] leading-[18px] font-medium">
               PRIORITY
             </div>
             <div onClick={toggling}>
-              <div className="w-[205px] flex items-center justify-between text-black text-[16px] leading-[24px] border-[1px] border-[#E5E5E5] rounded-[6px] py-[14px] px-3 mt-2">
+              <div className="w-[205px] cursor-pointer flex items-center justify-between text-black text-[16px] leading-[24px] border-[1px] border-[#E5E5E5] rounded-[6px] py-[14px] px-3 mt-2">
                 <div className="flex items-center">
                   <GiPlainCircle
                     className="mr-2"
@@ -100,7 +98,7 @@ const TodoForm = ({ id }) => {
                 </div>
               </div>
               {isOpen && (
-                <div className="w-[205px] bg-white text-[#4A4A4A] text-[16px] leading-[24px] border-x-[1px] border-t-[1px] border-[#E5E5E5] rounded-[6px]">
+                <div className="w-[205px] bg-white text-[#4A4A4A] absolute cursor-pointer text-[16px] leading-[24px] border-x-[1px] border-t-[1px] border-[#E5E5E5] rounded-[6px]">
                   {priority?.map((item, index) => (
                     <div
                       key={index}

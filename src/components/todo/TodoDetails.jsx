@@ -11,6 +11,7 @@ import {
 } from "../../services/activityApi";
 import { ModalContext } from "../modal/ModalContext";
 import TodoForm from "./TodoForm";
+import TodoList from "./TodoList";
 
 const TodoDetails = () => {
   const { id } = useParams();
@@ -23,11 +24,9 @@ const TodoDetails = () => {
     },
   });
 
-  console.log(title);
-
-  useEffect(() => {
-    reset({ title: title?.title });
-  }, [title]);
+  // useEffect(() => {
+  //   reset({ title: title?.title });
+  // }, [title]);
 
   const onSubmit = async (data) => {
     await updateTitle({ id, data });
@@ -58,7 +57,7 @@ const TodoDetails = () => {
         </div>
       </div>
       <div className="mt-[59px]">
-        <TodoEmpty />
+        <TodoList dataTodo={title} />
       </div>
     </div>
   );
