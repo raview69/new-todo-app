@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { CgClose } from "react-icons/cg";
+import { GiPlainCircle } from "react-icons/gi";
+import { SlArrowDown, SlArrowUp } from "react-icons/sl";
+import { ModalContext } from "../modal/ModalContext";
 
 const TodoForm = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("very-high");
+  const { handleModal } = useContext(ModalContext);
 
-  // const optionPriority = {
-  //   "very-high": "Sangat Tinggi",
-  //   high: "Tinggi",
-  //   medium: "Sedang",
-  //   low: "Rendah",
-  //   "very-low": "Sangat Rendah",
-  // };
+  const priority = ["very-high", "high", "medium", "low", "very-low"];
+
+  const priorityDetails = {
+    "very-high": ["Very High", "#ED4C5C"],
+    high: ["High", "#F8A541"],
+    medium: ["Medium", "#00A790"],
+    low: ["Low", "#428BC1"],
+    "very-low": ["Very Low", "#8942C1"],
+  };
 
   const toggling = () => {
     setIsOpen(!isOpen);
@@ -27,7 +33,7 @@ const TodoForm = () => {
         <div className="text-[18px] leading-[27px] font-medium">
           Tambah List Item
         </div>
-        <div>
+        <div onClick={handleModal}>
           <CgClose className="text-[#A4A4A4] text-lg" />
         </div>
       </div>
@@ -39,14 +45,56 @@ const TodoForm = () => {
           <div>
             <input
               type="input"
-              className="border-[1px] border-[#E5E5E5] rounded-[6px] w-[759px] h-[52px] text-[16px] leading-[24px] text-[#A4A4A4] px-[18px] mt-2"
-              defaultValue="Tambahkan nama list item"
+              className="border-[1px] border-[#E5E5E5] rounded-[6px] w-[759px] h-[52px] text-[16px] outline-none leading-[24px] text-[#A4A4A4] px-[18px] mt-2"
+              placeholder="Tambahkan nama list item"
             />
           </div>
         </div>
         <div className="mt-[26px]">
           <div className="text-[12px] leading-[18px] font-medium">PRIORITY</div>
-          <div></div>
+          <div onClick={toggling}>
+            <div className="w-[205px] flex items-center justify-between text-black text-[16px] leading-[24px] border-[1px] border-[#E5E5E5] rounded-[6px] py-[14px] px-3 mt-2">
+              <div className="flex items-center">
+                <GiPlainCircle
+                  className="mr-2"
+                  style={{
+                    color: `${priorityDetails[selectedOption][1]}`,
+                  }}
+                />
+                <div> {priorityDetails[selectedOption][0]}</div>
+              </div>
+              <div>
+                {isOpen ? (
+                  <SlArrowUp className="text-black" />
+                ) : (
+                  <SlArrowDown className="text-black" />
+                )}
+              </div>
+            </div>
+            {isOpen && (
+              <div className="w-[205px] bg-white text-[#4A4A4A] text-[16px] leading-[24px] border-x-[1px] border-t-[1px] border-[#E5E5E5] rounded-[6px]">
+                {priority?.map((item, index) => (
+                  <div
+                    key={index}
+                    onClick={onOptionClicked(item)}
+                    className={
+                      index === 4
+                        ? "flex items-center py-[14px] border-[#E5E5E5] pl-3"
+                        : "flex items-center py-[14px] border-b-[1px] border-[#E5E5E5] pl-3"
+                    }
+                  >
+                    <GiPlainCircle
+                      className="mr-2"
+                      style={{
+                        color: `${priorityDetails[item][1]}`,
+                      }}
+                    />
+                    <div>{priorityDetails[item][0]}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div></div>
