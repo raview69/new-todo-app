@@ -15,6 +15,9 @@ export const activityApi = createApi({
       query: (id) => `/activity-groups/${id}`,
       providesTags: ["Activity"],
     }),
+    getTitleById: builder.query({
+      query: (id) => `/activity-groups/${id}`,
+    }),
     createActivity: builder.mutation({
       query: (data) => ({
         url: "/activity-groups",
@@ -53,6 +56,7 @@ export const activityApi = createApi({
 export const {
   useGetActivityQuery,
   useGetActivityByIdQuery,
+  useGetTitleByIdQuery,
   useCreateActivityMutation,
   useUpdateTitleMutation,
   useCreateTodoMutation,

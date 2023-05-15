@@ -8,6 +8,7 @@ import TodoEmpty from "./TodoEmpty";
 import {
   useUpdateTitleMutation,
   useGetActivityByIdQuery,
+  useGetTitleByIdQuery,
 } from "../../services/activityApi";
 import { ModalContext } from "../modal/ModalContext";
 import TodoForm from "./TodoForm";
@@ -16,7 +17,8 @@ import TodoList from "./TodoList";
 const TodoDetails = () => {
   const { id } = useParams();
   const [updateTitle] = useUpdateTitleMutation();
-  const { data: title } = useGetActivityByIdQuery(id);
+  const { data: title } = useGetTitleByIdQuery(id);
+  const { data: todoData } = useGetActivityByIdQuery(id);
   const { handleModal } = useContext(ModalContext);
   const { register, reset } = useForm({
     defaultValues: {
@@ -24,9 +26,9 @@ const TodoDetails = () => {
     },
   });
 
-  // useEffect(() => {
-  //   reset({ title: title?.title });
-  // }, [title]);
+  useEffect(() => {
+    reset({ title: title?.title });
+  }, [title]);
 
   const onSubmit = async (data) => {
     await updateTitle({ id, data });
@@ -51,13 +53,22 @@ const TodoDetails = () => {
         </div>
         <div
           onClick={() => handleModal(<TodoForm id={id} />)}
-          className="flex items-center justify-center text-white bg-[#16ABF8] w-[159px] h-[53px] rounded-[45px] leading-[27px] text-[18px] font-semibold"
+          className="flex items-center justify-center cursor-pointer text-white bg-[#16ABF8] w-[159px] h-[53px] rounded-[45px] leading-[27px] text-[18px] font-semibold"
         >
           <GoPlus className="text-md font-bold mr-1" /> Tambah
         </div>
       </div>
       <div className="mt-[59px]">
-        <TodoList dataTodo={title} />
+        {todoData?.todo_items.length === 0 ? (
+          <div
+            onClick={() => handleModal(<TodoForm id={id} />)}
+            className="cursor-pointer"
+          >
+            <TodoEmpty />
+          </div>
+        ) : (
+          <TodoList dataTodo={todoData} />
+        )}
       </div>
     </div>
   );

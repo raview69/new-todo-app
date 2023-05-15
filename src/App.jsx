@@ -7,13 +7,11 @@ import TodoDetails from "./components/todo/TodoDetails";
 function App() {
   return (
     <>
-      <div className="bg-[#F4F4F4]">
-        <Header />
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="quests/:id/edit" element={<TodoDetails />} />
-        </Routes>
-      </div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="quests/:id/edit" element={<TodoDetails />} />
+      </Routes>
     </>
   );
 }

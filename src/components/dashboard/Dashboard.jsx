@@ -38,7 +38,7 @@ const Dashboard = () => {
         </div>
       </form>
 
-      <div className="mt-[59px]">
+      <div className="py-[59px]">
         <div className="grid grid-cols-4 gap-4">
           {activityData?.map((item, index) => (
             <div key={index}>
