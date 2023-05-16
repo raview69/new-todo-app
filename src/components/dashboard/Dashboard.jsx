@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import DashboardEmpty from "./DashboardEmpty";
+// import DashboardEmpty from "./DashboardEmpty";
 import { useForm } from "react-hook-form";
 import { GoPlus } from "react-icons/go";
 import {
@@ -28,7 +28,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div data-cy="activity-add-button" className="px-[220px] mt-[49px]">
+    <div className="px-[220px] mt-[49px]">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex items-center justify-between">
           <div
@@ -47,24 +47,18 @@ const Dashboard = () => {
         </div>
       </form>
       <div className="py-[59px]">
-        {data ? (
-          <div className="grid grid-cols-4 gap-4">
-            {activityData?.map((item, index) => (
-              <div key={index}>
-                <Item
-                  title={item.title}
-                  date={item.created_at}
-                  id={item.id}
-                  deleteClick={() =>
-                    handleModal(<DeleteItem itemData={item} />)
-                  }
-                />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <DashboardEmpty />
-        )}
+        <div className="grid grid-cols-4 gap-4">
+          {activityData?.map((item, index) => (
+            <div key={index}>
+              <Item
+                title={item.title}
+                date={item.created_at}
+                id={item.id}
+                deleteClick={() => handleModal(<DeleteItem itemData={item} />)}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

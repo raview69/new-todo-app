@@ -54,13 +54,13 @@ const TodoDetails = () => {
           </div>
           <TbPencil className="text-2xl text-[#A4A4A4]" />
         </div>
-        <div
+        <button
           data-cy="todo-add-button"
           onClick={() => handleModal(<TodoForm id={id} isEdit={true} />)}
           className="flex items-center justify-center cursor-pointer text-white bg-[#16ABF8] w-[159px] h-[53px] rounded-[45px] leading-[27px] text-[18px] font-semibold"
         >
           <GoPlus className="text-md font-bold mr-1" /> Tambah
-        </div>
+        </button>
       </div>
       <div className="mt-[59px]">
         {todoData?.todo_items.length === 0 ? (

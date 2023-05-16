@@ -8,25 +8,32 @@ const Item = ({ title, id, date, deleteClick }) => {
 
   return (
     <div
-      data-cy="header-title"
+      data-cy="activity-item"
       className="w-[235px] h-[234px] px-[26px] py-[22px] bg-white rounded-[12px] flex flex-col justify-between shadow-lg"
       key={id}
     >
       <Link to={`quests/${id}/edit`} className="h-[150px]">
         <div>
           <div
-            data-cy="activity-title"
+            data-cy="activity-item-title"
             className="text-[18px] leading-[27px] text-black font-bold"
           >
             {title}
           </div>
         </div>
       </Link>
-      <div className="flex items-center justify-between text-[#888888] text-[14px] leading-[21px]">
+      <div
+        data-cy="activity-item-date"
+        className="flex items-center justify-between text-[#888888] text-[14px] leading-[21px]"
+      >
         {formattedDate}
-        <div className="cursor-pointer" onClick={deleteClick}>
+        <button
+          data-cy="activity-item-delete-button"
+          className="cursor-pointer"
+          onClick={deleteClick}
+        >
           <TbTrash className="text-xl" />
-        </div>
+        </button>
       </div>
     </div>
   );
