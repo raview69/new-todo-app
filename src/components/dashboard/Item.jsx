@@ -8,13 +8,16 @@ const Item = ({ title, id, date, deleteClick }) => {
 
   return (
     <div
-      data-cy="Item"
+      data-cy="header-title"
       className="w-[235px] h-[234px] px-[26px] py-[22px] bg-white rounded-[12px] flex flex-col justify-between shadow-lg"
       key={id}
     >
       <Link to={`quests/${id}/edit`} className="h-[150px]">
         <div>
-          <div className="text-[18px] leading-[27px] text-black font-bold">
+          <div
+            data-cy="activity-title"
+            className="text-[18px] leading-[27px] text-black font-bold"
+          >
             {title}
           </div>
         </div>

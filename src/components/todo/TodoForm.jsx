@@ -86,8 +86,9 @@ const TodoForm = ({ id, isEdit }) => {
             <div className="text-[12px] leading-[18px] font-medium">
               NAMA LIST ITEM
             </div>
-            <div>
+            <div data-cy="modal-add-name-input">
               <input
+                data-cy="todo-add-button"
                 {...register("title")}
                 type="input"
                 className="border-[1px] border-[#E5E5E5] rounded-[6px] w-[759px] h-[52px] text-[16px] outline-none leading-[24px] text-[#A4A4A4] px-[18px] mt-2"
@@ -99,7 +100,7 @@ const TodoForm = ({ id, isEdit }) => {
             <div className="text-[12px] leading-[18px] font-medium">
               PRIORITY
             </div>
-            <div onClick={toggling}>
+            <div onClick={toggling} data-cy="modal-add-priority-dropdown">
               <div className="w-[205px] cursor-pointer flex items-center justify-between text-black text-[16px] leading-[24px] border-[1px] border-[#E5E5E5] rounded-[6px] py-[14px] px-3 mt-2">
                 <div className="flex items-center">
                   <GiPlainCircle
@@ -145,7 +146,10 @@ const TodoForm = ({ id, isEdit }) => {
           </div>
         </div>
         <div className="flex items-center justify-end px-[30px] mt-[15px] mb-[20px]">
-          <button className="flex items-center justify-center text-white bg-[#16ABF8] w-[150px] h-[54px] rounded-[45px] leading-[27px] text-[18px] font-semibold">
+          <button
+            data-cy="modal-add-save-button"
+            className="flex items-center justify-center text-white bg-[#16ABF8] w-[150px] h-[54px] rounded-[45px] leading-[27px] text-[18px] font-semibold"
+          >
             Simpan
           </button>
         </div>

@@ -37,13 +37,14 @@ const TodoDetails = () => {
   };
 
   return (
-    <div data-cy="TodoDetails" className="px-[220px] mt-[49px]">
+    <div data-cy="activity-item" className="px-[220px] mt-[49px]">
       <div className="flex items-center justify-between">
         <div className="flex items-center justify-between ">
           <MdArrowBackIosNew className="text-2xl" />
           <div className="font-bold text-[36px] leading-[54px] text-black mx-[28px]">
             <input
               {...register("title")}
+              data-cy="todo-title"
               type="input"
               className="bg-[#F4F4F4] outline-none w-[250px]"
               onChange={(e) => {
@@ -54,6 +55,7 @@ const TodoDetails = () => {
           <TbPencil className="text-2xl text-[#A4A4A4]" />
         </div>
         <div
+          data-cy="todo-add-button"
           onClick={() => handleModal(<TodoForm id={id} isEdit={true} />)}
           className="flex items-center justify-center cursor-pointer text-white bg-[#16ABF8] w-[159px] h-[53px] rounded-[45px] leading-[27px] text-[18px] font-semibold"
         >

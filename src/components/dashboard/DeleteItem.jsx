@@ -24,10 +24,7 @@ const DeleteItem = ({ itemData }) => {
       {isDelete ? (
         <AlertActivity />
       ) : (
-        <div
-          data-cy="DeleteItem"
-          className="w-[490px] h-[355px] bg-white rounded-[12px] py-[43px] px-[62px]"
-        >
+        <div className="w-[490px] h-[355px] bg-white rounded-[12px] py-[43px] px-[62px]">
           <div className="flex items-center justify-center">
             <FiAlertTriangle className="text-7xl text-[#ED4C5C]" />
           </div>
@@ -37,13 +34,17 @@ const DeleteItem = ({ itemData }) => {
           </div>
           <div className="flex items-center justify-center ">
             <button
+              data-cy="modal-delete-cancel-button"
               onClick={() => handleModal()}
               className="flex items-center justify-center text-black bg-[#F4F4F4] w-[150px] h-[54px] rounded-[45px] leading-[27px] text-[18px] font-semibold mr-4"
             >
               Batal
             </button>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <button className="flex items-center justify-center text-white bg-[#ED4C5C] w-[150px] h-[54px] rounded-[45px] leading-[27px] text-[18px] font-semibold">
+              <button
+                data-cy="activity-item-delete-button"
+                className="flex items-center justify-center text-white bg-[#ED4C5C] w-[150px] h-[54px] rounded-[45px] leading-[27px] text-[18px] font-semibold"
+              >
                 Hapus
               </button>
             </form>

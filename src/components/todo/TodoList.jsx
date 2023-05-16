@@ -39,7 +39,10 @@ const TodoList = ({ dataTodo }) => {
           <div className="bg-[#FFFFFF] w-[1000px] h-[80px] flex items-center justify-between px-[28px] rounded-[12px] shadow-lg">
             <div className="flex items-center">
               <form onSubmit={handleSubmit(onSubmit)}>
-                <div onClick={() => setIdTodo(item.id)}>
+                <div
+                  data-cy="todo-item-checkbox"
+                  onClick={() => setIdTodo(item.id)}
+                >
                   {item.is_active === 0 ? (
                     <button onClick={() => setValue("is_active", true)}>
                       <ImCheckboxChecked className="text-[#16ABF8]" />
@@ -70,6 +73,7 @@ const TodoList = ({ dataTodo }) => {
             </div>
             <div>
               <TbTrash
+                data-cy="todo-item-delete-button"
                 className="text-[#C4C4C4] text-lg cursor-pointer"
                 onClick={() => handleModal(<DeleteListItem itemData={item} />)}
               />

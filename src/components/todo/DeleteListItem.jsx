@@ -25,7 +25,7 @@ const DeleteListItem = ({ itemData }) => {
         <AlertActivity />
       ) : (
         <div
-          data-cy="DeleteListItem"
+          data-cy="modal-information"
           className="w-[490px] h-[355px] bg-white rounded-[12px] py-[43px] px-[62px]"
         >
           <div className="flex items-center justify-center">
@@ -43,7 +43,10 @@ const DeleteListItem = ({ itemData }) => {
               Batal
             </button>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <button className="flex items-center justify-center text-white bg-[#ED4C5C] w-[150px] h-[54px] rounded-[45px] leading-[27px] text-[18px] font-semibold">
+              <button
+                data-cy="modal-delete-confirm-button"
+                className="flex items-center justify-center text-white bg-[#ED4C5C] w-[150px] h-[54px] rounded-[45px] leading-[27px] text-[18px] font-semibold"
+              >
                 Hapus
               </button>
             </form>
