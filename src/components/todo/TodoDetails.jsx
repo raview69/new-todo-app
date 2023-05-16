@@ -41,10 +41,12 @@ const TodoDetails = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center justify-between ">
           <MdArrowBackIosNew className="text-2xl" />
-          <div className="font-bold text-[36px] leading-[54px] text-black mx-[28px]">
+          <div
+            data-cy="todo-title"
+            className="font-bold text-[36px] leading-[54px] text-black mx-[28px]"
+          >
             <input
               {...register("title")}
-              data-cy="todo-title"
               type="input"
               className="bg-[#F4F4F4] outline-none w-[250px]"
               onChange={(e) => {

@@ -22,11 +22,8 @@ const Item = ({ title, id, date, deleteClick }) => {
           </div>
         </div>
       </Link>
-      <div
-        data-cy="activity-item-date"
-        className="flex items-center justify-between text-[#888888] text-[14px] leading-[21px]"
-      >
-        {formattedDate}
+      <div className="flex items-center justify-between text-[#888888] text-[14px] leading-[21px]">
+        <div data-cy="activity-item-date">{formattedDate}</div>
         <button
           data-cy="activity-item-delete-button"
           className="cursor-pointer"

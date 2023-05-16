@@ -21,15 +21,24 @@ const DeleteItem = ({ itemData }) => {
 
   return (
     <>
-      <div className="w-[490px] h-[355px] bg-white rounded-[12px] py-[43px] px-[62px]">
-        <div className="flex items-center justify-center">
+      <div
+        data-cy="modal-delete"
+        className="w-[490px] h-[355px] bg-white rounded-[12px] py-[43px] px-[62px]"
+      >
+        <div
+          data-cy="modal-delete-icon"
+          className="flex items-center justify-center"
+        >
           <FiAlertTriangle className="text-7xl text-[#ED4C5C]" />
         </div>
-        <div className="mb-[46px] mt-[46px] text-center">
+        <div
+          data-cy="modal-delete-title"
+          className="mb-[46px] mt-[46px] text-center"
+        >
           Apakah anda yakin menghapus activity {""}
           <span className="font-bold">“{itemData?.title}”?</span>
         </div>
-        <div className="flex items-center justify-center ">
+        <div className="flex items-center justify-center">
           <button
             data-cy="modal-delete-cancel-button"
             onClick={() => handleModal()}
@@ -39,7 +48,7 @@ const DeleteItem = ({ itemData }) => {
           </button>
           <form onSubmit={handleSubmit(onSubmit)}>
             <button
-              data-cy="activity-item-delete-button"
+              data-cy="modal-delete-confirm-button"
               className="flex items-center justify-center text-white bg-[#ED4C5C] w-[150px] h-[54px] rounded-[45px] leading-[27px] text-[18px] font-semibold"
             >
               Hapus
