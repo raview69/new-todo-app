@@ -31,7 +31,10 @@ const Dashboard = () => {
     <div data-cy="activity-add-button" className="px-[220px] mt-[49px]">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex items-center justify-between">
-          <div className="font-bold text-[36px] leading-[54px] text-black">
+          <div
+            data-cy="activity-title"
+            className="font-bold text-[36px] leading-[54px] text-black"
+          >
             Activity
           </div>
           <input {...register("title")} type="hidden" />
