@@ -37,7 +37,7 @@ const TodoDetails = () => {
   };
 
   return (
-    <div className="px-[220px] mt-[49px]">
+    <div data-cy="TodoDetails" className="px-[220px] mt-[49px]">
       <div className="flex items-center justify-between">
         <div className="flex items-center justify-between ">
           <MdArrowBackIosNew className="text-2xl" />

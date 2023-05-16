@@ -24,7 +24,10 @@ const DeleteItem = ({ itemData }) => {
       {isDelete ? (
         <AlertActivity />
       ) : (
-        <div className="w-[490px] h-[355px] bg-white rounded-[12px] py-[43px] px-[62px]">
+        <div
+          data-cy="DeleteItem"
+          className="w-[490px] h-[355px] bg-white rounded-[12px] py-[43px] px-[62px]"
+        >
           <div className="flex items-center justify-center">
             <FiAlertTriangle className="text-7xl text-[#ED4C5C]" />
           </div>

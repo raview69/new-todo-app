@@ -33,7 +33,7 @@ const TodoList = ({ dataTodo }) => {
   console.log(dataTodo);
 
   return (
-    <>
+    <div data-cy="TodoList">
       {dataTodo?.todo_items.map((item, index) => (
         <div key={index} className="mb-4">
           <div className="bg-[#FFFFFF] w-[1000px] h-[80px] flex items-center justify-between px-[28px] rounded-[12px] shadow-lg">
@@ -77,7 +77,7 @@ const TodoList = ({ dataTodo }) => {
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

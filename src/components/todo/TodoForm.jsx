@@ -68,7 +68,10 @@ const TodoForm = ({ id, isEdit }) => {
   }, [todoData]);
 
   return (
-    <div className="bg-white w-[830px] rounded-[12px] shadow-lg">
+    <div
+      data-cy="TodoForm"
+      className="bg-white w-[830px] rounded-[12px] shadow-lg"
+    >
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex items-center justify-between border-b-[1px] border-[#E5E5E5] px-[30px] py-[24px]">
           <div className="text-[18px] leading-[27px] font-medium">

@@ -28,7 +28,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="px-[220px] mt-[49px]">
+    <div data-cy="Dashboard" className="px-[220px] mt-[49px]">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex items-center justify-between">
           <div className="font-bold text-[36px] leading-[54px] text-black">

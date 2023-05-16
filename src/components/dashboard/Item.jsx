@@ -8,6 +8,7 @@ const Item = ({ title, id, date, deleteClick }) => {
 
   return (
     <div
+      data-cy="Item"
       className="w-[235px] h-[234px] px-[26px] py-[22px] bg-white rounded-[12px] flex flex-col justify-between shadow-lg"
       key={id}
     >
