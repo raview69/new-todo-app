@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { TbTrash } from "react-icons/tb";
 import { TbPencil } from "react-icons/tb";
 import { GiPlainCircle } from "react-icons/gi";
 import { useForm } from "react-hook-form";
 import { ImCheckboxUnchecked, ImCheckboxChecked } from "react-icons/im";
 import { useUpdateTodoMutation } from "../../services/activityApi";
+import { ModalContext } from "../modal/ModalContext";
+import TodoForm from "./TodoForm";
+import DeleteListItem from "./DeleteListItem";
 
 const TodoList = ({ dataTodo }) => {
   const [idTodo, setIdTodo] = useState();
   const [updateTodo] = useUpdateTodoMutation();
+  const { handleModal } = useContext(ModalContext);
   const { handleSubmit, setValue } = useForm({
     defaultValues: {
       is_active: "",
@@ -25,6 +29,8 @@ const TodoList = ({ dataTodo }) => {
   const onSubmit = async (data) => {
     await updateTodo({ id: idTodo, data });
   };
+
+  console.log(dataTodo);
 
   return (
     <>
@@ -55,10 +61,18 @@ const TodoList = ({ dataTodo }) => {
                 />
                 {item.title}
               </div>
-              <TbPencil />
+              <TbPencil
+                className="text-[#C4C4C4] text-lg cursor-pointer"
+                onClick={() =>
+                  handleModal(<TodoForm id={item.id} isEdit={false} />)
+                }
+              />
             </div>
             <div>
-              <TbTrash />
+              <TbTrash
+                className="text-[#C4C4C4] text-lg cursor-pointer"
+                onClick={() => handleModal(<DeleteListItem itemData={item} />)}
+              />
             </div>
           </div>
         </div>

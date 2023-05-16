@@ -49,11 +49,22 @@ export const activityApi = createApi({
       }),
       invalidatesTags: ["Activity"],
     }),
+    getTodoById: builder.query({
+      query: (id) => `/todo-items/${id}`,
+      providesTags: ["Activity"],
+    }),
     updateTodo: builder.mutation({
       query: ({ id, data }) => ({
         url: `/todo-items/${id}`,
         method: "PATCH",
         body: data,
+      }),
+      invalidatesTags: ["Activity"],
+    }),
+    deleteTodo: builder.mutation({
+      query: (id) => ({
+        url: `/todo-items/${id}`,
+        method: "DELETE",
       }),
       invalidatesTags: ["Activity"],
     }),
@@ -69,4 +80,6 @@ export const {
   useUpdateTitleMutation,
   useCreateTodoMutation,
   useUpdateTodoMutation,
+  useGetTodoByIdQuery,
+  useDeleteTodoMutation,
 } = activityApi;

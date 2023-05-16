@@ -1,18 +1,18 @@
 import React, { useState, useContext } from "react";
 import { FiAlertTriangle } from "react-icons/fi";
-import { useDeleteActivityMutation } from "../../services/activityApi";
+import { useDeleteTodoMutation } from "../../services/activityApi";
 import { useForm } from "react-hook-form";
 import { ModalContext } from "../modal/ModalContext";
-import AlertActivity from "./AlertActivity";
+import AlertActivity from "../dashboard/AlertActivity";
 
-const DeleteItem = ({ itemData }) => {
-  const [deleteActivity] = useDeleteActivityMutation();
+const DeleteListItem = ({ itemData }) => {
+  const [deleteTodo] = useDeleteTodoMutation();
   const [isDelete, setIsDelete] = useState(false);
   const { handleModal } = useContext(ModalContext);
   const { handleSubmit } = useForm();
 
   const onSubmit = async () => {
-    await deleteActivity(itemData?.id);
+    await deleteTodo(itemData?.id);
     setIsDelete(true);
     setTimeout(() => {
       handleModal();
@@ -51,4 +51,4 @@ const DeleteItem = ({ itemData }) => {
   );
 };
 
-export default DeleteItem;
+export default DeleteListItem;

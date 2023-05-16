@@ -4,11 +4,22 @@ import { GiPlainCircle } from "react-icons/gi";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import { ModalContext } from "../modal/ModalContext";
 import { useForm } from "react-hook-form";
-import { useCreateTodoMutation } from "../../services/activityApi";
+import {
+  useCreateTodoMutation,
+  useGetTodoByIdQuery,
+  useGetActivityByIdQuery,
+} from "../../services/activityApi";
 
-const TodoForm = ({ id }) => {
+const TodoForm = ({ id, isEdit }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("very-high");
+  const { data: activityData } = useGetActivityByIdQuery(id, {
+    skip: !isEdit,
+  });
+  const { data: todoData } = useGetTodoByIdQuery(id, {
+    skip: isEdit,
+  });
+
   const { handleModal } = useContext(ModalContext);
   const [createTodo] = useCreateTodoMutation();
 
@@ -47,7 +58,14 @@ const TodoForm = ({ id }) => {
     if (selectedOption) {
       setValue("priority", selectedOption);
     }
-  }, [selectedOption]);
+  }, [selectedOption, activityData]);
+
+  useEffect(() => {
+    if (todoData) {
+      setValue("title", todoData?.title);
+      setSelectedOption(todoData?.priority);
+    }
+  }, [todoData]);
 
   return (
     <div className="bg-white w-[830px] rounded-[12px] shadow-lg">
