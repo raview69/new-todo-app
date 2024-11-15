@@ -9,6 +9,7 @@ import {
 import Item from "./Item";
 import { ModalContext } from "../modal/ModalContext";
 import DeleteItem from "./DeleteItem";
+import Report from "../drillingReport/Report";
 
 const Dashboard = () => {
   const { data } = useGetActivityQuery();
@@ -28,38 +29,13 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="px-[220px] mt-[49px]">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex items-center justify-between">
-          <div
-            data-cy="activity-title"
-            className="font-bold text-[36px] leading-[54px] text-black"
-          >
-            Activity
-          </div>
-          <input {...register("title")} type="hidden" />
-          <button
-            data-cy="activity-add-button"
-            className="flex items-center justify-center text-white bg-[#16ABF8] w-[159px] h-[53px] rounded-[45px] leading-[27px] text-[18px] font-semibold"
-          >
-            <GoPlus className="text-md font-bold mr-1" /> Tambah
-          </button>
-        </div>
-      </form>
-      <div className="py-[59px]">
-        <div className="grid grid-cols-4 gap-4">
-          {activityData?.map((item, index) => (
-            <div key={index}>
-              <Item
-                title={item.title}
-                date={item.created_at}
-                id={item.id}
-                deleteClick={() => handleModal(<DeleteItem itemData={item} />)}
-              />
-            </div>
-          ))}
-        </div>
+    <div className="mt-[49px] bg-[#EE5625]">
+      <div className="mx-[24px]">
+        <Report />
       </div>
+      {/* <form onSubmit={handleSubmit(onSubmit)}>
+       
+      </form> */}
     </div>
   );
 };

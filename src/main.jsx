@@ -8,13 +8,11 @@ import { store } from "./store";
 import { ModalProvider } from "./components/modal/ModalContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <ModalProvider>
-          <App />
-        </ModalProvider>
-      </Provider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <Provider store={store}>
+      <ModalProvider>
+        <App />
+      </ModalProvider>
+    </Provider>
+  </BrowserRouter>
 );
